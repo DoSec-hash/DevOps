@@ -23,7 +23,7 @@ fi
 echo "#-----------------------"
 STEP="kubectl Api Url"
 echo ${STEP}
-APIURL=$(kubectl cluster-info | grep 'Kubernetes master' | awk '/http/ {print $NF}')
+APIURL=$(kubectl cluster-info | grep -E 'Kubernetes master|Kubernetes control plane' | awk '/http/ {print $NF}')
 checkrc $? ${STEP}
 echo "API URL => ${APIURL}"
 
